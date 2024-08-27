@@ -125,6 +125,7 @@ public class ProductsPageTest extends BaseClass{
         int cartFinalValue = Integer.parseInt(cartValue);
         if (cartFinalValue != 0) {
             driver.findElement(By.xpath("(//span[@class=\"cart-count-badge\"])[1]")).click();
+
         }
     }
 
