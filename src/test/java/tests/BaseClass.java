@@ -1,4 +1,4 @@
-package webDriver;
+package tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,6 +10,5 @@ public class BaseClass {
         System.setProperty("webdriver.chrome.driver","src/test/webDriver/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-//        driver.get("https://rahulnxttrendz.ccbp.tech/login");
     }
 }
