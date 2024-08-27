@@ -2,6 +2,7 @@ package tests;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -30,48 +31,19 @@ public class ProductsPageTest extends BaseClass{
         String expectedPpHeading = "Exclusive Prime Deals";
         Assert.assertEquals(actualPpHeading,expectedPpHeading,"Prime deals heading miss-match");
     }
+
     @Test(priority = 2)
     public void ppProductsImageCheck(){
         hp.hpShopNowButton();
         int totalProducts = pp.ppTotalProducts();
-        int totalProductImages = pp.ppProductImages();
-        Assert.assertEquals(totalProducts,totalProductImages,"Product images miss-matching");
+        Assert.assertEquals(totalProducts,pp.ppProductImages(),"Product images miss-matching");
+        Assert.assertEquals(totalProducts,pp.ppProductTitles(),"Product Titles miss-matching");
+        Assert.assertEquals(totalProducts,pp.ppProductBrands(),"Product Brands miss-matching");
+        Assert.assertEquals(totalProducts,pp.ppProductPrices(),"Product Prices miss-matching");
+        Assert.assertEquals(totalProducts,pp.ppProductRatings(),"Product Ratings miss-matching");
+        Assert.assertEquals(totalProducts,pp.ppProductStars(),"Product Stars miss-matching");
     }
-    @Test(priority = 3)
-    public void ppProductsTitlesCheck(){
-        hp.hpShopNowButton();
-        int totalProducts = pp.ppTotalProducts();
-        int totalProductTitles = pp.ppProductTitles();
-        Assert.assertEquals(totalProducts,totalProductTitles,"Product Titles miss-matching");
-    }
-    @Test(priority = 4)
-    public void ppProductsBrandsCheck(){
-        hp.hpShopNowButton();
-        int totalProducts = pp.ppTotalProducts();
-        int totalProductBrands = pp.ppProductBrands();
-        Assert.assertEquals(totalProducts,totalProductBrands,"Product Brands miss-matching");
-    }
-    @Test(priority = 5)
-    public void ppProductsPricesCheck(){
-        hp.hpShopNowButton();
-        int totalProducts = pp.ppTotalProducts();
-        int totalProductTitles = pp.ppProductPrices();
-        Assert.assertEquals(totalProducts,totalProductTitles,"Product Prices miss-matching");
-    }
-    @Test(priority = 6)
-    public void ppProductsRatingsCheck(){
-        hp.hpShopNowButton();
-        int totalProducts = pp.ppTotalProducts();
-        int totalProductRatings = pp.ppProductRatings();
-        Assert.assertEquals(totalProducts,totalProductRatings,"Product Ratings miss-matching");
-    }
-    @Test(priority = 7)
-    public void ppProductsStarsCheck(){
-        hp.hpShopNowButton();
-        int totalProducts = pp.ppTotalProducts();
-        int totalProductStars = pp.ppProductStars();
-        Assert.assertEquals(totalProducts,totalProductStars,"Product Stars miss-matching");
-    }
+
     @Test(priority = 8)
     public void ppProductCategoriesCheck(){
         hp.hpShopNowButton();
@@ -84,36 +56,10 @@ public class ProductsPageTest extends BaseClass{
     public void ppSelectedProductHeadingCheck() {
         hp.hpShopNowButton();
         pp.ppClickOnAProduct();
-        String actualSelectedProductHeading = pp.ppSelectedProductHeading();
-        String expectedSelectedProductHeading = "Hair Dryer";
-        Assert.assertEquals(actualSelectedProductHeading, expectedSelectedProductHeading, "Selected product heading miss-matched ");
-    }
-
-    @Test(priority = 10)
-    public void ppSelectedProductPriceCheck() {
-        hp.hpShopNowButton();
-        pp.ppClickOnAProduct();
-        String actualSelectedProductPrice = pp.ppSelectedProductPrice();
-        String expectedSelectedProductPrice = "Rs 760/-";
-        Assert.assertEquals(actualSelectedProductPrice, expectedSelectedProductPrice, "Selected product price miss-matched ");
-    }
-
-    @Test(priority = 11)
-    public void ppSelectedProductRatingCheck() {
-        hp.hpShopNowButton();
-        pp.ppClickOnAProduct();
-        String actualSelectedProductRating = pp.ppSelectedProductRating();
-        String expectedSelectedProductRating = "3.9";
-        Assert.assertEquals(actualSelectedProductRating, expectedSelectedProductRating, "Selected product rating miss-matched ");
-    }
-
-    @Test(priority = 12)
-    public void ppQuantityIncreaseCheck() throws InterruptedException {
-        hp.hpShopNowButton();
-        pp.ppClickOnAProduct();
-        String actualQuantity = "5";
-        String expectedQuantity = pp.ppQuantityIncreaseButton();
-        Assert.assertEquals(actualQuantity, expectedQuantity, "Quantity miss-matching");
+        Assert.assertEquals(pp.ppSelectedProductHeading(), "Hair Dryer", "Selected product heading miss-matched ");
+        Assert.assertEquals(pp.ppSelectedProductPrice(), "Rs 760/-", "Selected product price miss-matched ");
+        Assert.assertEquals(pp.ppSelectedProductRating(), "3.9", "Selected product rating miss-matched ");
+        Assert.assertEquals(pp.ppQuantityIncreaseButton(), "5", "Quantity miss-matching");
     }
 
     @Test(priority = 13)
@@ -125,13 +71,11 @@ public class ProductsPageTest extends BaseClass{
         int cartFinalValue = Integer.parseInt(cartValue);
         if (cartFinalValue != 0) {
             driver.findElement(By.xpath("(//span[@class=\"cart-count-badge\"])[1]")).click();
-
         }
     }
 
-
-//    @AfterMethod
-//    public void TearDown(){
-//        driver.quit();
-//    }
+    @AfterMethod
+    public void TearDown(){
+        driver.quit();
+    }
 }
