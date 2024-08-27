@@ -34,10 +34,9 @@ public class ProductsPageTest extends BaseClass{
     @Test(priority = 2)
     public void ppProductsImageCheck(){
         hp.hpShopNowButton();
-        System.out.println(pp.ppProductsSearch());
-//        int totalProducts = pp.ppTotalProducts();
-//        int totalProductImages = pp.ppProductImages();
-//        Assert.assertEquals(totalProducts,totalProductImages,"Product images miss-matching");
+        int totalProducts = pp.ppTotalProducts();
+        int totalProductImages = pp.ppProductImages();
+        Assert.assertEquals(totalProducts,totalProductImages,"Product images miss-matching");
     }
     @Test(priority = 3)
     public void ppProductsTitlesCheck(){
