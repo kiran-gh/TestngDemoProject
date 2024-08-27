@@ -25,7 +25,7 @@ public class ProductsPageTest extends BaseClass{
     }
 
     @Test(priority = 1)
-    public void ppHeadingCheck() throws InterruptedException {
+    public void ppHeadingCheck() {
         hp.hpShopNowButton();
         String actualPpHeading = pp.ppPrimeDealsHeading();
         String expectedPpHeading = "Exclusive Prime Deals";
