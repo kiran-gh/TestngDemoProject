@@ -31,6 +31,12 @@ public class ProductsPage {
     By ppProductsSearchEle = By.className("search-input");
     By ppSearchedProductsListEle = By.xpath("//div[@class=\"all-products-container\"]//li");
     By ppSearchIconEle = By.className("search-icon");
+    By ppSelectedProductEle = By.xpath("(//a[@class=\"link-item\"])[1]");
+    By ppSelectedProductHeadingEle = By.className("product-name");
+    By ppSelectedProductPriceEle = By.className("price-details");
+    By ppSelectedProductRatingEle = By.className("rating");
+    By ppQuantityIncreaseButtonEle = By.xpath("//button[@testid=\"plus\"]");
+    By ppAddToCardButtonEle = By.xpath("//button[normalize-space()=\"ADD TO CART\"]");
 
     public String ppPrimeDealsHeading() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(ppPrimeDealsHeadingEle));
@@ -47,9 +53,9 @@ public class ProductsPage {
     public int ppProductImages() {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppProductImageEle));
         List<WebElement> productImages = driver.findElements(ppProductImageEle);
-        for(WebElement productImg: productImages){
+        for (WebElement productImg : productImages) {
             boolean productImgStatus = productImg.isDisplayed();
-            Assert.assertTrue(productImgStatus,"Product image is not displaying");
+            Assert.assertTrue(productImgStatus, "Product image is not displaying");
         }
         List<WebElement> productImgs = driver.findElements(ppProductImageEle);
         return productImgs.size();
@@ -58,9 +64,9 @@ public class ProductsPage {
     public int ppProductTitles() {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppProductTitleEle));
         List<WebElement> productTitles = driver.findElements(ppProductTitleEle);
-        for(WebElement productTitle: productTitles){
+        for (WebElement productTitle : productTitles) {
             boolean productTitleStatus = productTitle.isDisplayed();
-            Assert.assertTrue(productTitleStatus,"Product Title is not displaying");
+            Assert.assertTrue(productTitleStatus, "Product Title is not displaying");
         }
         List<WebElement> productTtls = driver.findElements(ppProductTitleEle);
         return productTtls.size();
@@ -69,9 +75,9 @@ public class ProductsPage {
     public int ppProductBrands() {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppProductBrandEle));
         List<WebElement> productBrands = driver.findElements(ppProductBrandEle);
-        for(WebElement productBrand: productBrands){
+        for (WebElement productBrand : productBrands) {
             boolean productBrandStatus = productBrand.isDisplayed();
-            Assert.assertTrue(productBrandStatus,"Product Brand is not displaying");
+            Assert.assertTrue(productBrandStatus, "Product Brand is not displaying");
         }
         List<WebElement> productBrnds = driver.findElements(ppProductBrandEle);
         return productBrnds.size();
@@ -80,9 +86,9 @@ public class ProductsPage {
     public int ppProductPrices() {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppProductPriceEle));
         List<WebElement> productPrices = driver.findElements(ppProductPriceEle);
-        for(WebElement productPrice: productPrices){
+        for (WebElement productPrice : productPrices) {
             boolean productPriceStatus = productPrice.isDisplayed();
-            Assert.assertTrue(productPriceStatus,"Product Price is not displaying");
+            Assert.assertTrue(productPriceStatus, "Product Price is not displaying");
         }
         List<WebElement> productPrics = driver.findElements(ppProductPriceEle);
         return productPrics.size();
@@ -91,9 +97,9 @@ public class ProductsPage {
     public int ppProductRatings() {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppProductRatingELe));
         List<WebElement> productRatings = driver.findElements(ppProductRatingELe);
-        for(WebElement productRating: productRatings){
+        for (WebElement productRating : productRatings) {
             boolean productRatingStatus = productRating.isDisplayed();
-            Assert.assertTrue(productRatingStatus,"Product Rating is not displaying");
+            Assert.assertTrue(productRatingStatus, "Product Rating is not displaying");
         }
         List<WebElement> productRtngs = driver.findElements(ppProductRatingELe);
         return productRtngs.size();
@@ -102,20 +108,20 @@ public class ProductsPage {
     public int ppProductStars() {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppProductStarEle));
         List<WebElement> productStars = driver.findElements(ppProductStarEle);
-        for(WebElement productStar: productStars){
+        for (WebElement productStar : productStars) {
             boolean productStarStatus = productStar.isDisplayed();
-            Assert.assertTrue(productStarStatus,"Product Star is not displaying");
+            Assert.assertTrue(productStarStatus, "Product Star is not displaying");
         }
         List<WebElement> productStrs = driver.findElements(ppProductStarEle);
         return productStrs.size();
     }
 
-    public int ppProductCategories(){
+    public int ppProductCategories() {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppProductsCategoryEle));
         List<WebElement> productCategories = driver.findElements(ppProductStarEle);
-        for(WebElement productCategory: productCategories){
+        for (WebElement productCategory : productCategories) {
             boolean productCategoryStatus = productCategory.isDisplayed();
-            Assert.assertTrue(productCategoryStatus,"Product Category is not displaying");
+            Assert.assertTrue(productCategoryStatus, "Product Category is not displaying");
         }
         List<WebElement> productCategrs = driver.findElements(ppProductsCategoryEle);
         return productCategrs.size();
@@ -125,11 +131,44 @@ public class ProductsPage {
         driver.findElement(ppProductsSearchEle).sendKeys("Watch");
         driver.findElement(ppSearchIconEle).click();
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppSearchedProductsListEle));
-
         List<WebElement> productsWithSearchedName = driver.findElements(By.xpath("ppSearchedProductsListEle"));
         for (WebElement productWithSearchedName : productsWithSearchedName) {
             String productName = productWithSearchedName.getText();
         }
+    }
+
+    public void ppClickOnAProduct() {
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppSelectedProductEle));
+        driver.findElement(ppSelectedProductEle).click();
+    }
+
+    public String ppSelectedProductHeading() {
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppSelectedProductHeadingEle));
+        return driver.findElement(ppSelectedProductHeadingEle).getText();
+    }
+
+    public String ppSelectedProductPrice() {
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppSelectedProductPriceEle));
+        return driver.findElement(ppSelectedProductPriceEle).getText();
+    }
+
+    public String ppSelectedProductRating() {
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppSelectedProductRatingEle));
+        return driver.findElement(ppSelectedProductRatingEle).getText();
+    }
+
+    public String ppQuantityIncreaseButton() {
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppQuantityIncreaseButtonEle));
+        for (int i = 0; i < 4; i++) {
+            driver.findElement(ppQuantityIncreaseButtonEle).click();
+        }
+        return driver.findElement(By.xpath("//p[@class=\"quantity\"]")).getText();
+    }
+
+    public String ppAddToCart() {
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppAddToCardButtonEle));
+        driver.findElement(ppAddToCardButtonEle).click();
+        return driver.findElement(By.xpath("(//span[@class=\"cart-count-badge\"])[1]")).getText();
     }
 }
 

@@ -1,8 +1,7 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -81,8 +80,57 @@ public class ProductsPageTest extends BaseClass{
         Assert.assertEquals(actualProductCategories,expectedProductCategories,"Product Categories miss-matching");
     }
 
-    @AfterMethod
-    public void TearDown(){
-        driver.quit();
+    @Test(priority = 9)
+    public void ppSelectedProductHeadingCheck() {
+        hp.hpShopNowButton();
+        pp.ppClickOnAProduct();
+        String actualSelectedProductHeading = pp.ppSelectedProductHeading();
+        String expectedSelectedProductHeading = "Hair Dryer";
+        Assert.assertEquals(actualSelectedProductHeading, expectedSelectedProductHeading, "Selected product heading miss-matched ");
     }
+
+    @Test(priority = 10)
+    public void ppSelectedProductPriceCheck() {
+        hp.hpShopNowButton();
+        pp.ppClickOnAProduct();
+        String actualSelectedProductPrice = pp.ppSelectedProductPrice();
+        String expectedSelectedProductPrice = "Rs 760/-";
+        Assert.assertEquals(actualSelectedProductPrice, expectedSelectedProductPrice, "Selected product price miss-matched ");
+    }
+
+    @Test(priority = 11)
+    public void ppSelectedProductRatingCheck() {
+        hp.hpShopNowButton();
+        pp.ppClickOnAProduct();
+        String actualSelectedProductRating = pp.ppSelectedProductRating();
+        String expectedSelectedProductRating = "3.9";
+        Assert.assertEquals(actualSelectedProductRating, expectedSelectedProductRating, "Selected product rating miss-matched ");
+    }
+
+    @Test(priority = 12)
+    public void ppQuantityIncreaseCheck() throws InterruptedException {
+        hp.hpShopNowButton();
+        pp.ppClickOnAProduct();
+        String actualQuantity = "5";
+        String expectedQuantity = pp.ppQuantityIncreaseButton();
+        Assert.assertEquals(actualQuantity, expectedQuantity, "Quantity miss-matching");
+    }
+
+    @Test(priority = 13)
+    public void ppAddToCartCheck() {
+        hp.hpShopNowButton();
+        pp.ppClickOnAProduct();
+        pp.ppQuantityIncreaseButton();
+        String cartValue = pp.ppAddToCart();
+        int cartFinalValue = Integer.parseInt(cartValue);
+        if (cartFinalValue != 0) {
+            driver.findElement(By.xpath("(//span[@class=\"cart-count-badge\"])[1]")).click();
+        }
+    }
+
+
+//    @AfterMethod
+//    public void TearDown(){
+//        driver.quit();
+//    }
 }
