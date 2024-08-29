@@ -1,0 +1,210 @@
+<html>
+<head>
+<title>TestNG:  E:/Kiran/Learning Nxtwave/TestngDemoProject</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>E:/Kiran/Learning Nxtwave/TestngDemoProject</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>26/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Thu Aug 29 14:56:20 IST 2024</td>
+</tr>
+<tr><td>Total time:</td><td>256 seconds (256799 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='tests.HomePageTest.hpShopNowCheck()'><b>hpShopNowCheck</b><br>Test class: tests.HomePageTest</td>
+<td></td>
+<td>0</td>
+<td>tests.HomePageTest@72cde7cc</td></tr>
+<tr>
+<td title='tests.LoginPageTest.lpLogoCheck()'><b>lpLogoCheck</b><br>Test class: tests.LoginPageTest</td>
+<td></td>
+<td>0</td>
+<td>tests.LoginPageTest@609db43b</td></tr>
+<tr>
+<td title='tests.HomePageTest.hpHeadingCheck()'><b>hpHeadingCheck</b><br>Test class: tests.HomePageTest</td>
+<td></td>
+<td>0</td>
+<td>tests.HomePageTest@72cde7cc</td></tr>
+<tr>
+<td title='tests.LoginPageTest.lpValidLoginCheck()'><b>lpValidLoginCheck</b><br>Test class: tests.LoginPageTest<br>Parameters: invalidPassword, rahul, rahul@202</td>
+<td></td>
+<td>1</td>
+<td>tests.LoginPageTest@609db43b</td></tr>
+<tr>
+<td title='tests.HomePageTest.hpLogoCheck()'><b>hpLogoCheck</b><br>Test class: tests.HomePageTest</td>
+<td></td>
+<td>0</td>
+<td>tests.HomePageTest@72cde7cc</td></tr>
+<tr>
+<td title='tests.ProductsPageTest.ppProductCategoriesCheck()'><b>ppProductCategoriesCheck</b><br>Test class: tests.ProductsPageTest</td>
+<td></td>
+<td>1</td>
+<td>tests.ProductsPageTest@5fd4f8f5</td></tr>
+<tr>
+<td title='tests.LoginPageTest.lpValidLoginCheck()'><b>lpValidLoginCheck</b><br>Test class: tests.LoginPageTest<br>Parameters: emptyCredentials, , </td>
+<td></td>
+<td>0</td>
+<td>tests.LoginPageTest@609db43b</td></tr>
+<tr>
+<td title='tests.CartPageTest.cpRemoveSingleItemCheck()'><b>cpRemoveSingleItemCheck</b><br>Test class: tests.CartPageTest</td>
+<td></td>
+<td>0</td>
+<td>tests.CartPageTest@696da30b</td></tr>
+<tr>
+<td title='tests.CartPageTest.cpDecreaseButtonCheck()'><b>cpDecreaseButtonCheck</b><br>Test class: tests.CartPageTest</td>
+<td></td>
+<td>0</td>
+<td>tests.CartPageTest@696da30b</td></tr>
+<tr>
+<td title='tests.CartPageTest.cpClearAllItemsCheck()'><b>cpClearAllItemsCheck</b><br>Test class: tests.CartPageTest</td>
+<td></td>
+<td>0</td>
+<td>tests.CartPageTest@696da30b</td></tr>
+<tr>
+<td title='tests.HomePageTest.hpCartButtonCheck()'><b>hpCartButtonCheck</b><br>Test class: tests.HomePageTest</td>
+<td></td>
+<td>1</td>
+<td>tests.HomePageTest@72cde7cc</td></tr>
+<tr>
+<td title='tests.ProductsPageTest.ppSelectedProductDataCheck()'><b>ppSelectedProductDataCheck</b><br>Test class: tests.ProductsPageTest</td>
+<td></td>
+<td>2</td>
+<td>tests.ProductsPageTest@5fd4f8f5</td></tr>
+<tr>
+<td title='tests.HomePageTest.hpHomeButtonCheck()'><b>hpHomeButtonCheck</b><br>Test class: tests.HomePageTest</td>
+<td></td>
+<td>0</td>
+<td>tests.HomePageTest@72cde7cc</td></tr>
+<tr>
+<td title='tests.ProductsPageTest.ppProductContainerCheck()'><b>ppProductContainerCheck</b><br>Test class: tests.ProductsPageTest</td>
+<td></td>
+<td>12</td>
+<td>tests.ProductsPageTest@5fd4f8f5</td></tr>
+<tr>
+<td title='tests.LoginPageTest.lpValidLoginCheck()'><b>lpValidLoginCheck</b><br>Test class: tests.LoginPageTest<br>Parameters: invalidUserName, rahu, rahul@2021</td>
+<td></td>
+<td>1</td>
+<td>tests.LoginPageTest@609db43b</td></tr>
+<tr>
+<td title='tests.LoginPageTest.lpValidLoginCheck()'><b>lpValidLoginCheck</b><br>Test class: tests.LoginPageTest<br>Parameters: validCredentials, rahul, rahul@2021</td>
+<td></td>
+<td>1</td>
+<td>tests.LoginPageTest@609db43b</td></tr>
+<tr>
+<td title='tests.CartPageTest.cpHeadingCheck()'><b>cpHeadingCheck</b><br>Test class: tests.CartPageTest</td>
+<td></td>
+<td>0</td>
+<td>tests.CartPageTest@696da30b</td></tr>
+<tr>
+<td title='tests.ProductsPageTest.ppHeadingCheck()'><b>ppHeadingCheck</b><br>Test class: tests.ProductsPageTest</td>
+<td></td>
+<td>1</td>
+<td>tests.ProductsPageTest@5fd4f8f5</td></tr>
+<tr>
+<td title='tests.CartPageTest.cpIncreaseButtonCheck()'><b>cpIncreaseButtonCheck</b><br>Test class: tests.CartPageTest</td>
+<td></td>
+<td>0</td>
+<td>tests.CartPageTest@696da30b</td></tr>
+<tr>
+<td title='tests.LoginPageTest.lpValidLoginCheck()'><b>lpValidLoginCheck</b><br>Test class: tests.LoginPageTest<br>Parameters: invalidCredentials, rahu, rahul@202</td>
+<td></td>
+<td>0</td>
+<td>tests.LoginPageTest@609db43b</td></tr>
+<tr>
+<td title='tests.HomePageTest.hpLogoutButtonCheck()'><b>hpLogoutButtonCheck</b><br>Test class: tests.HomePageTest</td>
+<td></td>
+<td>0</td>
+<td>tests.HomePageTest@72cde7cc</td></tr>
+<tr>
+<td title='tests.CartPageTest.cpTotalPriceDisplayingVsSumOfAllItemsCheck()'><b>cpTotalPriceDisplayingVsSumOfAllItemsCheck</b><br>Test class: tests.CartPageTest</td>
+<td></td>
+<td>0</td>
+<td>tests.CartPageTest@696da30b</td></tr>
+<tr>
+<td title='tests.CartPageTest.cpTotalListOfItemsCheck()'><b>cpTotalListOfItemsCheck</b><br>Test class: tests.CartPageTest</td>
+<td></td>
+<td>0</td>
+<td>tests.CartPageTest@696da30b</td></tr>
+<tr>
+<td title='tests.ProductsPageTest.ppCartButtonCheck()'><b>ppCartButtonCheck</b><br>Test class: tests.ProductsPageTest</td>
+<td></td>
+<td>7</td>
+<td>tests.ProductsPageTest@5fd4f8f5</td></tr>
+<tr>
+<td title='tests.HomePageTest.hpURLCheck()'><b>hpURLCheck</b><br>Test class: tests.HomePageTest</td>
+<td></td>
+<td>1</td>
+<td>tests.HomePageTest@72cde7cc</td></tr>
+<tr>
+<td title='tests.HomePageTest.hpProductsButtonCheck()'><b>hpProductsButtonCheck</b><br>Test class: tests.HomePageTest</td>
+<td></td>
+<td>1</td>
+<td>tests.HomePageTest@72cde7cc</td></tr>
+</table><p>
+</body>
+</html>

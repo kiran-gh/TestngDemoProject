@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="E:/Kiran/Learning Nxtwave/TestngDemoProject">
+
+        <classes>
+            <class name="tests.LoginPageTest">
+                <methods>
+                    <include name="lpLogoCheck"/>
+                    <include name="lpValidLoginCheck"/>
+                </methods>
+            </class>
+            <class name="tests.HomePageTest">
+                <methods>
+                    <include name="hpLogoCheck"/>
+                    <include name="hpURLCheck"/>
+                    <include name="hpHomeButtonCheck"/>
+                    <include name="hpProductsButtonCheck"/>
+                    <include name="hpCartButtonCheck"/>
+                    <include name="hpLogoutButtonCheck"/>
+                    <include name="hpHeadingCheck"/>
+                    <include name="hpShopNowCheck"/>
+                </methods>
+            </class>
+            <class name="tests.ProductsPageTest">
+                <methods>
+                    <include name="ppHeadingCheck"/>
+                    <include name="ppProductContainerCheck"/>
+                    <include name="ppProductCategoriesCheck"/>
+                    <include name="ppSelectedProductDataCheck"/>
+                    <include name="ppCartButtonCheck"/>
+                </methods>
+            </class>
+            <class name="tests.CartPageTest">
+                <methods>
+                    <include name="cpHeadingCheck"/>
+                    <include name="cpTotalListOfItemsCheck"/>
+                    <include name="cpRemoveSingleItemCheck"/>
+                    <include name="cpDecreaseButtonCheck"/>
+                    <include name="cpIncreaseButtonCheck"/>
+                    <include name="cpTotalPriceDisplayingVsSumOfAllItemsCheck"/>
+                    <include name="cpClearAllItemsCheck"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -8,17 +8,17 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 
-public class LoginPageTest extends BaseClass{
+public class LoginPageTest extends BaseClass {
     LoginPage lp;
 
     @DataProvider(name = "credentials")
-    public Object[][] getData(){
+    public Object[][] getData() {
         return new Object[][]{
-                {"validCredentials","rahul","rahul@2021"},
-                {"invalidUserName","rahu","rahul@2021"},
-                {"invalidPassword","rahul","rahul@202"},
-                {"invalidCredentials","rahu","rahul@202"},
-                {"emptyCredentials","",""}
+                {"validCredentials", "rahul", "rahul@2021"},
+                {"invalidUserName", "rahu", "rahul@2021"},
+                {"invalidPassword", "rahul", "rahul@202"},
+                {"invalidCredentials", "rahu", "rahul@202"},
+                {"emptyCredentials", "", ""}
         };
     }
 
@@ -30,14 +30,14 @@ public class LoginPageTest extends BaseClass{
     }
 
     @Test(priority = 1)
-    public void lpLogoCheck(){
+    public void lpLogoCheck() {
         String actualLogoSrc = lp.lpLoginLogo();
         String expectedLogoSrc = "https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png";
-        Assert.assertEquals(actualLogoSrc, expectedLogoSrc,"Expected logo miss-matched");
+        Assert.assertEquals(actualLogoSrc, expectedLogoSrc, "Expected logo miss-matched");
     }
 
     @Test(priority = 2, dataProvider = "credentials")
-    public void lpValidLoginCheck(String scenario, String username, String password){
+    public void lpValidLoginCheck(String scenario, String username, String password) {
         switch (scenario) {
             case "validCredentials":
                 String actualHomePageUrl = lp.lpValidLogin(scenario, username, password);
@@ -69,12 +69,9 @@ public class LoginPageTest extends BaseClass{
     }
 
     @AfterMethod
-    public void TearDown(){
+    public void TearDown() {
         driver.quit();
     }
-
-
-
 
 
 }
