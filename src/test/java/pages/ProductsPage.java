@@ -12,10 +12,12 @@ import java.util.List;
 public class ProductsPage {
     WebDriver driver;
     WebDriverWait wait;
+    HomePage hp;
 
     public ProductsPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(35));
+        hp = new HomePage(driver);
     }
 
     By ppPrimeDealsHeadingEle = By.xpath("//h1[@class=\"primedeals-list-heading\"]");
@@ -31,11 +33,17 @@ public class ProductsPage {
 //    By ppSearchedProductsListEle = By.xpath("//div[@class=\"all-products-container\"]//li");
 //    By ppSearchIconEle = By.className("search-icon");
     By ppSelectedProductEle = By.xpath("(//a[@class=\"link-item\"])[1]");
+    By ppWirelessEarBudsEle = By.xpath("//h1[normalize-space()=\"True Wireless Earbuds\"]");
+    By ppQuartzWatchEle = By.xpath("//h1[normalize-space()=\"Privateer Quartz Watch\"]");
+    By ppPodcastMicrophoneEle = By.xpath("//h1[normalize-space()=\"Podcast Microphone\"]");
+    By ppSlimFitBlazerEle = By.xpath("//h1[normalize-space()=\"Slim Fit Blazer\"]");
+
     By ppSelectedProductHeadingEle = By.className("product-name");
     By ppSelectedProductPriceEle = By.className("price-details");
     By ppSelectedProductRatingEle = By.className("rating");
     By ppQuantityIncreaseButtonEle = By.xpath("//button[@testid=\"plus\"]");
     By ppAddToCardButtonEle = By.xpath("//button[normalize-space()=\"ADD TO CART\"]");
+    By ppCartButtonEle = By.className("cart-count-badge");
 
     public String ppPrimeDealsHeading() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(ppPrimeDealsHeadingEle));
@@ -90,6 +98,16 @@ public class ProductsPage {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppSelectedProductEle));
         driver.findElement(ppSelectedProductEle).click();
     }
+    public void ppClickOnMultipleProducts(){
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppSlimFitBlazerEle));
+        addingMultipleProducts(ppSlimFitBlazerEle);
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppQuartzWatchEle));
+        addingMultipleProducts(ppQuartzWatchEle);
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppPodcastMicrophoneEle));
+        addingMultipleProducts(ppPodcastMicrophoneEle);
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppWirelessEarBudsEle));
+        addingMultipleProducts(ppWirelessEarBudsEle);
+    }
 
     public String ppSelectedProductHeading() {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppSelectedProductHeadingEle));
@@ -114,10 +132,40 @@ public class ProductsPage {
         return driver.findElement(By.xpath("//p[@class=\"quantity\"]")).getText();
     }
 
-    public String ppAddToCart() {
+    public void ppAddToCart() {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ppAddToCardButtonEle));
         driver.findElement(ppAddToCardButtonEle).click();
+
+    }
+
+    public String ppItemsInCartIcon(){
+        WebElement cartElement = driver.findElement(By.xpath("(//span[@class=\"cart-count-badge\"])[1]"));
+        wait.until(ExpectedConditions.visibilityOf(cartElement));
         return driver.findElement(By.xpath("(//span[@class=\"cart-count-badge\"])[1]")).getText();
+    }
+
+    public String  ppCartButton(){
+        driver.findElement(ppCartButtonEle).click();
+        wait.until(ExpectedConditions.urlToBe("https://rahulnxttrendz.ccbp.tech/cart"));
+        return driver.getCurrentUrl();
+    }
+
+    public void navigateToCartPage(){
+//        ppClickOnAProduct();
+//        ppQuantityIncreaseButton();
+//        ppAddToCart();
+//        ppCartButton();
+        ppClickOnMultipleProducts();
+        ppCartButton();
+        wait.until(ExpectedConditions.urlToBe("https://rahulnxttrendz.ccbp.tech/cart"));
+    }
+
+    public void addingMultipleProducts(By locator){
+        driver.findElement(locator).click();
+        ppQuantityIncreaseButton();
+        ppAddToCart();
+        hp.hpProductsButtonAction();
+        wait.until(ExpectedConditions.urlToBe("https://rahulnxttrendz.ccbp.tech/products"));
     }
 }
 

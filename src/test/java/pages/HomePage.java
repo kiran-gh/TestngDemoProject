@@ -65,4 +65,8 @@ public class HomePage {
         wait.until(ExpectedConditions.urlToBe("https://rahulnxttrendz.ccbp.tech/products"));
        return driver.getCurrentUrl();
     }
+
+    public void hpProductsButtonAction(){
+        driver.findElement(hpProductsButtonEle).click();
+    }
 }

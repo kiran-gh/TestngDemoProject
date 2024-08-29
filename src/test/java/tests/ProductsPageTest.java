@@ -33,7 +33,7 @@ public class ProductsPageTest extends BaseClass{
     }
 
     @Test(priority = 2)
-    public void ppProductsImageCheck(){
+    public void ppProductContainerCheck(){
         hp.hpShopNowButton();
         int totalProducts = pp.ppTotalProducts();
         Assert.assertEquals(totalProducts,pp.ppProductImages(),"Product images miss-matching");
@@ -44,7 +44,7 @@ public class ProductsPageTest extends BaseClass{
         Assert.assertEquals(totalProducts,pp.ppProductStars(),"Product Stars miss-matching");
     }
 
-    @Test(priority = 8)
+    @Test(priority = 3)
     public void ppProductCategoriesCheck(){
         hp.hpShopNowButton();
         int actualProductCategories = pp.ppProductCategories();
@@ -52,8 +52,8 @@ public class ProductsPageTest extends BaseClass{
         Assert.assertEquals(actualProductCategories,expectedProductCategories,"Product Categories miss-matching");
     }
 
-    @Test(priority = 9)
-    public void ppSelectedProductHeadingCheck() {
+    @Test(priority = 4)
+    public void ppSelectedProductDataCheck() {
         hp.hpShopNowButton();
         pp.ppClickOnAProduct();
         Assert.assertEquals(pp.ppSelectedProductHeading(), "Hair Dryer", "Selected product heading miss-matched ");
@@ -62,20 +62,26 @@ public class ProductsPageTest extends BaseClass{
         Assert.assertEquals(pp.ppQuantityIncreaseButton(), "5", "Quantity miss-matching");
     }
 
-    @Test(priority = 13)
-    public void ppAddToCartCheck() {
+    @Test
+    public void ppCartButtonCheck() {
         hp.hpShopNowButton();
-        pp.ppClickOnAProduct();
-        pp.ppQuantityIncreaseButton();
-        String cartValue = pp.ppAddToCart();
+        pp.ppClickOnMultipleProducts();
+        String cartValue = pp.ppItemsInCartIcon();
         int cartFinalValue = Integer.parseInt(cartValue);
         if (cartFinalValue != 0) {
             driver.findElement(By.xpath("(//span[@class=\"cart-count-badge\"])[1]")).click();
+            Assert.assertEquals(driver.getCurrentUrl(),"https://rahulnxttrendz.ccbp.tech/cart","Cart page url miss-match");
         }
     }
 
-    @AfterMethod
-    public void TearDown(){
-        driver.quit();
-    }
+//    @Test(priority = 6)
+//    public void ppCartButtonCheck(){
+//        ppAddToCartCheckItems();
+//        Assert.assertEquals(driver.getCurrentUrl(),"https://rahulnxttrendz.ccbp.tech/cart","Cart page url miss-match");
+//    }
+
+//    @AfterMethod
+//    public void TearDown(){
+//        driver.quit();
+//    }
 }
